@@ -1,0 +1,20 @@
+Scala is 'Scalable language'
+Scala is pure OO
+- In Scala every value is an object and every operation is a method call.
+Scala is functional programming language
+- A function is a first-class value just like integer or string, and hence can be treated same, like being passed as argument to other functions
+or assigned to a variable, or returned by other functions, or defined inside another function, or define anonymous functions wherever
+needed just like integer or string literals
+- Scala encourages 'referentially transparent" operations,ie such methods always give same result for a given input.Such a method has no side effects.
+Immutability of data structures playes a major role in this paradigm.Scala provides many immutable data structures like map,tuples,lists,sets.This paradigm makes
+methods less coupled, and hence more reliable and reusable
+
+Statically typed: Scala is statically typed language,meaning variables are classified on the basis of values they hold during compilation,
+like Int,String etc. But Type Inference feature of Scala makes it possible that we don't need to explicitly type variable type.
+It helps in getting rid of verbosity of statically typed languages,like Java.
+
+In Scala, objects are created with operator 'new', and they can be parametrized with value using () and type using []
+
+In functional programming. methods shouldn't have side effects.
+
+In Scala, developers can grow the language by adding features they want, and they can be used just like native language features
