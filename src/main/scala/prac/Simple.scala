@@ -122,6 +122,15 @@ object Simple extends App{
     val s = "HELLO" toLowerCase; //same as HELLO".toLowerCase()
     println(s)
 
+    //equality
+    println(List(1,2,3) == List(1,2,3))
+    println(List(1,2,3) == List(2,1,3))
+    println(null == null)
+
+    val str1 = "Hi"
+    val str2 = "Hi"
+    println(str1.eq(str2))
+    //str1 = "Hi"
   }
 
   def changeC() = {
