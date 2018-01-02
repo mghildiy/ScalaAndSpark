@@ -18,3 +18,7 @@ In Scala, objects are created with operator 'new', and they can be parametrized 
 In functional programming. methods shouldn't have side effects.
 
 In Scala, developers can grow the language by adding features they want, and they can be used just like native language features
+
+Functional programming:
+- Move from vars(imperative programming) to vals(functional programming)
+- Methods with no sid effects,ie method must only compute and return a value and must not impact the external world in any possible way

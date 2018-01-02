@@ -1,5 +1,6 @@
 package prac
 
+//standalone object
 object Simple extends App{
   var c = 55;
 
@@ -99,6 +100,27 @@ object Simple extends App{
 
     val thrill = "Will"::"Fill"::"Until"::Nil
     println(thrill.count(str=>str.length==4))
+
+    val hex = 0x5
+    println(hex)
+
+    val little: Short = 9999
+
+    //infix operator notation: object method/operator argument
+    var x1 = 1 + 2 //same as 1.+(2)
+    println(x1)
+    var ind = "Hello" indexOf 'l' //same as "Hello".indexOf('l')
+    println(ind)
+
+    //prefix operator notation: method/operator object
+    var x2 = -2 //same as: 2.unary_-
+    println(x2)
+    x2 = 4.unary_- //same as -4
+    println(x2)
+
+    //postfix operator notation: object method/operator
+    val s = "HELLO" toLowerCase; //same as HELLO".toLowerCase()
+    println(s)
 
   }
 
