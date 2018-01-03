@@ -16,5 +16,12 @@ object RationalObject {
     println(rn4)
 
     println(rn4 + rn1)
+    println(rn2 * rn1)
+    println(rn1+(rn2 * rn1))
+
+    println(rn1 * 4)
+
+    implicit def intToRational(x: Int) = new Rational(x)
+    println(4 * rn1)
   }
 }

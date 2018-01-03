@@ -21,4 +21,4 @@ In Scala, developers can grow the language by adding features they want, and the
 
 Functional programming:
 - Move from vars(imperative programming) to vals(functional programming)
-- Methods with no sid effects,ie method must only compute and return a value and must not impact the external world in any possible way
+- Methods with no side effects,ie method must only compute and return a value and must not impact the external world in any possible way
