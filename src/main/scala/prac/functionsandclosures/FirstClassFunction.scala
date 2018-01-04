@@ -31,6 +31,7 @@ object FirstClassFunction {
     val n = null
     println(n)
 
+    //val someName = prod NOT ALLOWED.Why??????
     increment = prod
     println(increment(1000))
 
