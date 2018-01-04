@@ -131,6 +131,18 @@ object Simple extends App{
     val str2 = "Hi"
     println(str1.eq(str2))
     //str1 = "Hi"
+
+    val any: Int = 12
+    println(any)
+
+    println(isEqual(11,12))
+    println("ac" eq "ab")
+
+    val n: Null = null
+  }
+
+  def isEqual(x: Int,y: Int) : Boolean = {
+    x == y
   }
 
   def changeC() = {
