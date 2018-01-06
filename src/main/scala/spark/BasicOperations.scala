@@ -10,8 +10,6 @@ object BasicOperations {
     val conf = new SparkConf().setMaster("local").setAppName("WordCount")
     val sc = new SparkContext(conf)
     sc.setLogLevel("ERROR")
-    //val spark = SparkSession.builder.getOrCreate()
-    //spark.sparkContext.setLogLevel("ERROR")
 
     //map
     val nums = sc.parallelize(List(1, 2, 3, 4))
@@ -29,5 +27,26 @@ object BasicOperations {
     //actions
     //reduce
     println(nums.reduce((x,y) => x*y))
+
+    //key-value pairs
+    val pairs = lines.map(x => (x.split(" ")(0), x))
+    println(pairs.count())
+    println(pairs.first())
+    println(pairs)
+
+    val numMapRDD = sc.parallelize(Seq((1,2), (3,4), (3,5)))
+    println(numMapRDD.count())
+    val reducedRDD = numMapRDD.reduceByKey((x,y) => x*y)
+    reducedRDD.collect().foreach(println)
+
+    val groupedRDD = numMapRDD.groupByKey()
+    groupedRDD.collect().foreach(println)
+
+    val longList = 1 to 1000000 toList
+    val numsToAdd = sc.parallelize(longList,30)
+    val st = System.nanoTime()
+    println(numsToAdd.reduce((x,y) => x+y))
+    val et = System.nanoTime()
+    println("Time spend:"+(et-st))
   }
 }
