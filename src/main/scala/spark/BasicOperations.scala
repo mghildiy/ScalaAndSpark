@@ -68,10 +68,42 @@ object BasicOperations {
     val filteredRDD = nums.filter(x => x > 1)
     println("New RDD size after filtering:"+filteredRDD.collect().length)// 3
     println(filteredRDD.collect().mkString(","))// 3 elements
+    val filteredRDD1 = strs.filter(str => str.contains("Scala"))
+    println("New RDD size after filtering:"+filteredRDD1.collect().length)// 3
+    println(filteredRDD1.collect().mkString(","))// 3 elements
+
 
     //actions
-    //reduce
-    println(nums.reduce((x,y) => x*y))
+    //reduce:computes a value using an input function which takes two input elements of the type in RDD and returns a new element of same type
+    println("Product of all the numbers:"+nums.reduce((x,y) => x*y))// 24
+
+    //fold:same as reduce, except it needs a starting value called 'zero value' to be used for initial call
+    val employeeRDD = sc.parallelize(List(("Jack",1000),("John",1200),("Jill",655)))
+    val zeroValue = ("dummy",0)
+    val maxSalaryEmployee = employeeRDD.fold(zeroValue)((acc,emp2) => {if(acc._2 < emp2._2) emp2 else acc})
+    println("Employee with maximum salary is"+maxSalaryEmployee)
+
+    //aggregate:this operation enables us to return type different from type in RDD.Zero value is needed as in fold, a function to combine
+    //elements in RDD with accumulator, and another function which merges two accumulators from two different nodes in the cluster
+    val result = nums.aggregate((0.0,0.0))((acc,value) => (acc._1 + value,acc._2 + 1),(acc1,acc2) => (acc1._1 + acc2._1,acc1._2 + acc2._2))
+    println("Sum,number:"+result._1+","+result._2)
+    println("Average is:"+result._1/result._2)
+
+    //count:returns number of elements in RDD
+    println("Number of elements:"+nums.count())// 4
+
+    //countByValue:returns tuples of element and no of times it occurs in RDD
+    val strRDD = sc.parallelize(List("One","Two","Three","One","Four",4,"Three"))
+    val resultMap = strRDD.countByValue()
+    println(resultMap)// 5 entries in map:One -> 2, Two -> 1, Four -> 1, Three -> 2, 4 -> 1
+
+
+    //collect,take(n):return elements from RDD
+    println("Collect:"+nums.collect().mkString(","))
+    println("Take:"+nums.take(3).mkString(","))
+    //foreach(func):returns nothing, just applies input function on each element in RDD
+    nums.foreach(println)
+
 
     //key-value pairs
     val pairs = lines.map(x => (x.split(" ")(0), x))
