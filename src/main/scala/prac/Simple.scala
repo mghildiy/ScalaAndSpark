@@ -1,5 +1,7 @@
 package prac
 
+import scala.collection.mutable.Map
+
 //standalone object
 object Simple extends App{
   var c = 55;
@@ -139,6 +141,52 @@ object Simple extends App{
     println("ac" eq "ab")
 
     val n: Null = null
+
+    val intList = List(1,2,3)
+    println(intList.count(i => i > 1))
+
+    var phy = (101,"Physics")
+    println(phy)
+
+    var planes = Set("Boeing","Airbus")
+    println(planes.getClass)
+    planes += "Lear"
+
+    println(1.->("Hi"))//returns a tuple
+
+    val treasureMap = Map[Int, String]()
+    treasureMap += (1 -> "Go to island.")
+    treasureMap += (2 -> "Find big X on ground.")
+    treasureMap += (3 -> "Dig.")
+    println(treasureMap(2))
+    println(treasureMap.get(1))
+
+    val incr = (x: Int) => x + 1 //function literal
+    println(incr(10))
+
+    val double = (x: Int) => 2 * x
+
+    val numList = List(1,2,3,4)
+    var sum = 0
+    numList.foreach((x:Int) => sum+= x)
+    println(sum)
+
+    val numMap = Map("i" -> 1, "ii" -> 2, "iii" -> 2)
+    println(numMap)
+    val newMap = numMap - "ii"
+    println(numMap)
+    println(newMap)
+    numMap ++ List(("x",6))
+    val xList = List(("y",55),("m",55),("z",55))
+
+    for(t <- xList)
+      numMap + t
+
+    println(numMap.keys)
+    val fDef = (str:String) => println(str)
+    numMap.keys.foreach(fDef)
+    numMap.values.foreach(println)
+
   }
 
   def isEqual(x: Int,y: Int) : Boolean = {
