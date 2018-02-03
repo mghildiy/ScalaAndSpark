@@ -15,6 +15,7 @@ object BasicOperations {
     val sc = new SparkContext(conf)
     //sc.setLogLevel("ERROR")
 
+    //transformations
     //map:maps each element in RDD to a new element by applying passed function
     //squaring data elements
     val nums = sc.parallelize(List(1, 2, 3, 4))
@@ -32,11 +33,11 @@ object BasicOperations {
     val lines = sc.parallelize(List("Messi is best","Neymar is not far behind","Ronaldo is overhyped"))
     println("RDD size before splitting:"+lines.collect().length)// 3 elements
     val words = lines.flatMap(line => line.split(" "))
-    println("New RDD size after splitting:"+words.collect().length)
+    println("New RDD size after splitting:"+words.collect().length)// 11
     println(words.collect().mkString(","))// 11 elements
 
     //pseudo set operations(RDDs are of same type)
-    val inputRDD1 = sc.parallelize(List("coffee","coffee","panda","monkey","tea"))// 5 elments
+    val inputRDD1 = sc.parallelize(List("coffee","coffee","panda","monkey","tea"))// 5 elements
     val inputRDD2 = sc.parallelize(List("coffee","monkey","kitty"))// 3 elements
 
     //distinct:creates a new RDD with unique elements
@@ -102,28 +103,5 @@ object BasicOperations {
     println("Collect:"+nums.collect().mkString(","))
     println("Take:"+nums.take(3).mkString(","))
     //foreach(func):returns nothing, just applies input function on each element in RDD
-    nums.foreach(println)
-
-
-    //key-value pairs
-    val pairs = lines.map(x => (x.split(" ")(0), x))
-    println(pairs.count())
-    println(pairs.first())
-    println(pairs)
-
-    val numMapRDD = sc.parallelize(Seq((1,2), (3,4), (3,5)))
-    println(numMapRDD.count())
-    val reducedRDD = numMapRDD.reduceByKey((x,y) => x*y)
-    reducedRDD.collect().foreach(println)
-
-    val groupedRDD = numMapRDD.groupByKey()
-    groupedRDD.collect().foreach(println)
-
-    val longList = 1 to 1000000 toList
-    val numsToAdd = sc.parallelize(longList,2)
-    val st = System.nanoTime()
-    println(numsToAdd.reduce((x,y) => x+y))
-    val et = System.nanoTime()
-    println("Time spend:"+(et-st))
   }
 }
