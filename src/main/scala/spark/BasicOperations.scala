@@ -1,8 +1,8 @@
 package spark
 
-import org.apache.spark.{SparkConf, SparkContext}
-import org.apache.log4j.Logger
-import org.apache.log4j.Level
+import java.util.logging.{Level, Logger}
+
+
 
 object BasicOperations {
 

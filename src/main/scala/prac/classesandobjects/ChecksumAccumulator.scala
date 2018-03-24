@@ -1,5 +1,7 @@
 package prac.classesandobjects
 
+import java.util
+
 import scala.collection.mutable.Map
 
 //companion class for ChecksumAccumulator object
@@ -18,7 +20,7 @@ class ChecksumAccumulator {
 
 //companion object for ChecksumAccumulator class
 object ChecksumAccumulator {
-  private val cache = Map[String,Int]()
+  private val cache = util.Map[String,Int]()
 
   def calculate(s:String): Int = {
     if(cache.contains(s)){
